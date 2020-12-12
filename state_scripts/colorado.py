@@ -11,6 +11,7 @@ PRIMARY_URL = 'https://leg.colorado.gov/legislators'
 # to their kudos, they do have an excel output; but ideally this is csv
 
 all_sh = state_helper(PRIMARY_URL)
+all_sh.prepare_soup()
 addresses = all_sh.bs4_helper.get_text_for_tds()
 for address in addresses:
   if  '@' in address:

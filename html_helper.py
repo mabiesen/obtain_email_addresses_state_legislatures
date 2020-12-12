@@ -6,7 +6,6 @@ class html_helper(object):
   def __init__(self, url):
     self.url = url
     self.base_url = self.get_base_url()
-    self.html = self.get_html() 
 
   def get_base_url(self):
     parsed_url = urlparse(self.url)

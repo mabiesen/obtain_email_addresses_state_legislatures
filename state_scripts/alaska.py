@@ -10,7 +10,9 @@ PRIMARY_SENATORS_URL = 'http://akleg.gov/senate.php'
 # each of these pages has mail-to links included in primary page
 
 rep_sh = state_helper(PRIMARY_REPRESENTATIVES_URL)
+rep_sh.prepare_soup()
 sen_sh = state_helper(PRIMARY_SENATORS_URL)
+sen_sh.prepare_soup()
 
 rep_links = rep_sh.bs4_helper.get_hrefs_for_a_tag()
 for link in rep_links:

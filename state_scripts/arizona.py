@@ -14,6 +14,7 @@ PRIMARY_URL = 'https://www.azleg.gov/memberroster/'
 # "The email address is built by combining the legislator's userId and @azleg.gov. For example a legislator with a userId of jjones, would be jjones@azleg.gov"
 
 all_sh = state_helper(PRIMARY_URL)
+all_sh.prepare_soup()
 
 all_text_for_links = all_sh.bs4_helper.get_text_for_a_tag()
 for link in all_text_for_links:

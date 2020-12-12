@@ -17,6 +17,10 @@ class html_helper(object):
     result.raise_for_status()
     return result.text #we dont need the result status detail, just html
 
+  def get_file_contents(self):
+    result = requests.get(self.url, verify=False, allow_redirects=True) 
+    return result.content
+
   def get_full_urls_from_hrefs(self, href_array):
     return_array = []
     for href in href_array:

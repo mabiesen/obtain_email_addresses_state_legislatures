@@ -1,10 +1,21 @@
 from html_helper import  html_helper
 from bs4_helper import bs4_helper
+from xlsx_helper import xlsx_helper
+import tempfile
 
 class state_helper(object):
   def __init__(self, url):
     self.url = url
+    self.html_helper =  html_helper(self.url)
 
   def prepare_soup(self):
-    self.html_helper =  html_helper(self.url)
     self.bs4_helper = bs4_helper(self.html_helper.get_html())
+
+  def parse_xlsx_file_column_by_index(self, page_index, column_index, pop_rows=False):
+    ret_array = []
+    with tempfile.NamedTemporaryFile(suffix='.xlsx') as fp:
+      fp.write(self.html_helper.get_file_contents()) 
+      self.xlsx_helper = xlsx_helper(fp.name)
+      ret_array = self.xlsx_helper.get_data_from_column_by_index(page_index, column_index, pop_rows)
+    return ret_array
+      

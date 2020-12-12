@@ -13,16 +13,11 @@ rep_sh = state_helper(PRIMARY_REPRESENTATIVES_URL)
 sen_sh = state_helper(PRIMARY_SENATORS_URL)
 
 rep_links = rep_sh.bs4_helper.get_hrefs_for_a_tag()
-print("Printing Representatives emails For Alaska")
-print("")
 for link in rep_links:
   if 'mailto:' in link:
     print(link.replace('mailto:',''))
 
 sen_links = sen_sh.bs4_helper.get_hrefs_for_a_tag()
-print("")
-print("Printing Senators emails For Alaska")
-print("")
 for link in sen_links:
   if 'mailto:' in link:
     print(link.replace('mailto:',''))

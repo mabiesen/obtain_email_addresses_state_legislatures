@@ -12,11 +12,9 @@ PRIMARY_SENATORS_URL = 'https://legislature.maine.gov/senate/senators/9536'
 # the primary link suggests we should get email addresses in the excel file...
 
 rep_sh = state_helper(PRIMARY_REPRESENTATIVES_URL)
-rep_sh.prepare_soup()
-rep_links = rep_sh.bs4_helper.get_hrefs_for_a_tag()
-for link in rep_links:
-  if 'mailto:' in link:
-    print(link.replace('mailto:',''))
+rep_addrs = rep_sh.get_mailto_addresses()
+for addr in rep_addrs:
+  print(addr)
 
 sen_sh = state_helper(PRIMARY_SENATORS_URL)
 sen_sh.prepare_soup()
@@ -24,8 +22,6 @@ sen_links = sen_sh.bs4_helper.get_hrefs_for_a_tag()
 for link in sen_links:
   if '/senate/district' in link:
     temp_sh = state_helper('https://' + sen_sh.html_helper.base_url + link)
-    temp_sh.prepare_soup()
-    temp_links = temp_sh.bs4_helper.get_hrefs_for_a_tag()
-    for link in temp_links:
-      if 'mailto:' in link:
-        print(link.replace('mailto:',''))
+    temp_addrs = temp_sh.get_mailto_addresses()
+    for addr in temp_addrs:
+      print(addr)

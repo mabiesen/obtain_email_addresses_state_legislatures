@@ -2,6 +2,7 @@ from html_helper import  html_helper
 from bs4_helper import bs4_helper
 from xlsx_helper import xlsx_helper
 import tempfile
+import csv
 
 class state_helper(object):
   def __init__(self, url):
@@ -19,3 +20,12 @@ class state_helper(object):
       ret_array = self.xlsx_helper.get_data_from_column_by_index(page_index, column_index, pop_rows)
     return ret_array
       
+  def parse_csv_column_by_index(self, column_index):
+    ret_array = []
+    unparsed_rows = self.html_helper.get_html().split("\n")
+    for row in unparsed_rows:
+      parts = row.split(",")
+      if (len(parts) - 1) >= column_index:
+        ret_array.append(parts[column_index])
+    return ret_array
+

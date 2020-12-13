@@ -28,6 +28,13 @@ class bs4_helper(object):
       texts.append(element.text)
     return texts
 
+  def get_text_for_span_tags(self):
+    elements = self.soup.find_all('span')
+    texts = []
+    for element in elements:
+      texts.append(element.text)
+    return texts
+
   def get_text_for_tds(self):
     tds = self.soup.findAll("td")    
     texts = []

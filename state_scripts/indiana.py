@@ -1,8 +1,4 @@
-import os
-import sys
-sys.path.append(os.getcwd() + '/..')
-
-from state_helper import state_helper
+from lib.state_helper import state_helper
 
 HOUSE_DEMOCRATS_URL = 'https://indianahousedemocrats.org/members'
 HOUSE_REPUBLICANS_URL = 'https://www.indianahouserepublicans.com/members/'

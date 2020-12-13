@@ -1,8 +1,4 @@
-import os
-import sys
-sys.path.append(os.getcwd() + '/..')
-
-from state_helper import state_helper
+from lib.state_helper import state_helper
 
 PRIMARY_SENATORS_URL = 'http://www.kslegislature.org/li/b2019_20/chamber/senate/roster/'
 PRIMARY_REPRESENTATIVES_URL = 'http://www.kslegislature.org/li/b2019_20/chamber/house/roster/'

@@ -1,8 +1,4 @@
-import os
-import sys
-sys.path.append(os.getcwd() + '/..')
-
-from state_helper import state_helper
+from lib.state_helper import state_helper
 
 PRIMARY_REPRESENTATIVES_URL = 'https://legis.delaware.gov/Chambers/House/AssemblyMembers'
 PRIMARY_SENATORS_URL = 'https://legis.delaware.gov/Chambers/Senate/AssemblyMembers'

@@ -21,6 +21,13 @@ class bs4_helper(object):
       texts.append(link_element.text)
     return texts
 
+  def get_text_for_p_tags(self):
+    elements = self.soup.find_all('p')
+    texts = []
+    for element in elements:
+      texts.append(element.text)
+    return texts
+
   def get_text_for_tds(self):
     tds = self.soup.findAll("td")    
     texts = []

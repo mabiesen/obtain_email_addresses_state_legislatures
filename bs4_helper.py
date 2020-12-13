@@ -45,15 +45,17 @@ class bs4_helper(object):
     return hrefs
 
   def get_hrefs_for_class(self, class_name):
-    mylinks = self.soup.findAll("a", {"class": class_name})
+    link_elements = self.soup.findAll("a", {"class": class_name})
     hrefs = []
     for link_element in link_elements:
       hrefs.append(link_element['href'])
     return hrefs
 
-# call the functions that we created
-#url = get_url_from_user()
-#base_url = get_base_url_from_url(url)
-#html = get_html_for_url(url)
-#hrefs = get_hrefs_from_html(html)
-#links = get_full_urls_from_hrefs(hrefs, base_url)
+  def get_hrefs_for_a_tags_in_div_by_class(self, class_name):
+    div_elements = self.soup.findAll("div", {"class": class_name})
+    hrefs = []
+    for div_element in div_elements:
+      a_tags = div_element.findAll("a")
+      for tag in a_tags:
+        hrefs.append(tag['href'])
+    return hrefs

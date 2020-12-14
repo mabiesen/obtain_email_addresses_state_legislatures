@@ -1,8 +1,8 @@
 from lib.state_helper import state_helper
 
 def run():
-  PRIMARY_REPRESENTATIVES_URL =  'https://www.ilga.gov/house/'
-  PRIMARY_SENATORS_URL = 'https://www.ilga.gov/senate/'
+  representatives_url =  'https://www.ilga.gov/house/'
+  senators_url = 'https://www.ilga.gov/senate/'
 
 # it seems that only house members list email addresses :(
 # need to drill into reps to see email

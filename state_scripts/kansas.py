@@ -1,11 +1,11 @@
 from lib.state_helper import state_helper
 
 def run():
-  PRIMARY_SENATORS_URL = 'http://www.kslegislature.org/li/b2019_20/chamber/senate/roster/'
-  PRIMARY_REPRESENTATIVES_URL = 'http://www.kslegislature.org/li/b2019_20/chamber/house/roster/'
+  senators_url = 'http://www.kslegislature.org/li/b2019_20/chamber/senate/roster/'
+  representatives_url = 'http://www.kslegislature.org/li/b2019_20/chamber/house/roster/'
 
-  sen_sh = state_helper(PRIMARY_SENATORS_URL)
-  rep_sh = state_helper(PRIMARY_REPRESENTATIVES_URL)
+  sen_sh = state_helper(senators_url)
+  rep_sh = state_helper(representatives_url)
 
   rep_addrs = rep_sh.get_mailto_addresses()
   for addr in rep_addrs:

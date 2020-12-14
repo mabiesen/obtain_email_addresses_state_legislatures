@@ -1,21 +1,21 @@
 from lib.state_helper import state_helper
 
 def run():
-  HOUSE_DEMOCRATS_URL = 'https://indianahousedemocrats.org/members'
-  HOUSE_REPUBLICANS_URL = 'https://www.indianahouserepublicans.com/members/'
-  SENATE_DEMOCRATS_URL = 'https://www.indianasenatedemocrats.org/senators/'
-  SENATE_REPUBLICANS_URL = 'https://www.indianasenaterepublicans.com/senators'
+  house_democrats_url = 'https://indianahousedemocrats.org/members'
+  house_republicans_url = 'https://www.indianahouserepublicans.com/members/'
+  senate_democrats_url = 'https://www.indianasenatedemocrats.org/senators/'
+  senate_republicans_url = 'https://www.indianasenaterepublicans.com/senators'
 
   # house dems do not appear to expose email addresses
   # senate dems appear to use javascript to populate email address
 
-  #hd_sh = state_helper(HOUSE_DEMOCRATS_URL)
+  #hd_sh = state_helper(house_democrats_url)
   #hd_sh.prepare_soup()
-  hr_sh = state_helper(HOUSE_REPUBLICANS_URL)
+  hr_sh = state_helper(house_republicans_url)
   hr_sh.prepare_soup()
-  #sd_sh = state_helper(SENATE_DEMOCRATS_URL)
+  #sd_sh = state_helper(senate_democrats_url)
   #sd_sh.prepare_soup()
-  sr_sh = state_helper(SENATE_REPUBLICANS_URL)
+  sr_sh = state_helper(senate_republicans_url)
   sr_sh.prepare_soup()
 
 

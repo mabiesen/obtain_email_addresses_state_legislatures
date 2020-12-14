@@ -1,12 +1,12 @@
 from lib.state_helper import state_helper
 
 def run():
-  PRIMARY_SENATORS_URL = 'http://www.senate.ga.gov/senators/en-US/SenateMembersList.aspx'
-  PRIMARY_REPRESENTATIVES_URL = 'http://www.house.ga.gov/Representatives/en-US/HouseMembersList.aspx'
+  senators_url = 'http://www.senate.ga.gov/senators/en-US/SenateMembersList.aspx'
+  representatives_url = 'http://www.house.ga.gov/Representatives/en-US/HouseMembersList.aspx'
 
-  rep_sh = state_helper(PRIMARY_REPRESENTATIVES_URL)
+  rep_sh = state_helper(representatives_url)
   rep_sh.prepare_soup()
-  sen_sh = state_helper(PRIMARY_SENATORS_URL)
+  sen_sh = state_helper(senators_url)
   sen_sh.prepare_soup()
 
   sen_links = sen_sh.bs4_helper.get_hrefs_for_a_tag()

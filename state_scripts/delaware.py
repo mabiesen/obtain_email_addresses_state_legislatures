@@ -1,8 +1,8 @@
 from lib.state_helper import state_helper
 
 def run():
-  PRIMARY_REPRESENTATIVES_URL = 'https://legis.delaware.gov/Chambers/House/AssemblyMembers'
-  PRIMARY_SENATORS_URL = 'https://legis.delaware.gov/Chambers/Senate/AssemblyMembers'
+  representatives_url = 'https://legis.delaware.gov/Chambers/House/AssemblyMembers'
+  senators_url = 'https://legis.delaware.gov/Chambers/Senate/AssemblyMembers'
 
 #  these url's display links to senators
 # they do not  directly expose senator email  addresses; for that

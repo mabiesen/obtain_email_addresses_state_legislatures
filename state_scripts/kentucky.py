@@ -1,10 +1,10 @@
 from lib.state_helper import state_helper
 
 def run():
-  PRIMARY_SENATORS_URL = 'https://legislature.ky.gov/Legislators/senate'
-  PRIMARY_REPRESENTATIVES_URL = 'https://legislature.ky.gov/Legislators/house-of-representatives'
+  senators_url = 'https://legislature.ky.gov/Legislators/senate'
+  representatives_url = 'https://legislature.ky.gov/Legislators/house-of-representatives'
 
-  sen_sh = state_helper(PRIMARY_SENATORS_URL)
+  sen_sh = state_helper(senators_url)
   sen_sh.prepare_soup()
   links =  sen_sh.bs4_helper.get_hrefs_for_a_tag()
   sen_addrs = []
@@ -19,7 +19,7 @@ def run():
           sen_addrs.append(text)
           print(text)
 
-  rep_sh = state_helper(PRIMARY_REPRESENTATIVES_URL)
+  rep_sh = state_helper(representatives_url)
   rep_sh.prepare_soup()
   links =  rep_sh.bs4_helper.get_hrefs_for_a_tag()
   rep_addrs = []

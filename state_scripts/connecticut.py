@@ -1,13 +1,13 @@
 from lib.state_helper import state_helper
 
 def run():
-  PRIMARY_REPRESENTATIVES_URL =  'https://www.cga.ct.gov/asp/menu/hlist.asp'
-  PRIMARY_SENATORS_URL = 'https://www.cga.ct.gov/asp/menu/slist.asp'
+  representatives_url =  'https://www.cga.ct.gov/asp/menu/hlist.asp'
+  senators_url = 'https://www.cga.ct.gov/asp/menu/slist.asp'
 
   # each of these pages has mail-to links included in primary page
 
-  rep_sh = state_helper(PRIMARY_REPRESENTATIVES_URL)
-  sen_sh = state_helper(PRIMARY_SENATORS_URL)
+  rep_sh = state_helper(representatives_url)
+  sen_sh = state_helper(senators_url)
 
   rep_addrs = rep_sh.get_mailto_addresses()
   for addr in rep_addrs:

@@ -1,11 +1,11 @@
 from lib.state_helper import state_helper
 
 def run():
-  PRIMARY_SENATORS_URL = 'https://senate.michigan.gov/Senatoremaillst.html'
-  PRIMARY_REPRESENTATIVES_URL = 'https://www.house.mi.gov/MHRPublic/frmRepListMilenia.aspx?all=true'
+  senators_url = 'https://senate.michigan.gov/Senatoremaillst.html'
+  representatives_url = 'https://www.house.mi.gov/MHRPublic/frmRepListMilenia.aspx?all=true'
 
-  sen_sh = state_helper(PRIMARY_SENATORS_URL)
-  rep_sh = state_helper(PRIMARY_REPRESENTATIVES_URL)
+  sen_sh = state_helper(senators_url)
+  rep_sh = state_helper(representatives_url)
 
   rep_addrs = rep_sh.get_mailto_addresses()
   for addr in rep_addrs:

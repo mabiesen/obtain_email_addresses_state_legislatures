@@ -1,9 +1,9 @@
 from lib.state_helper import state_helper
 
 def run():
-  PRIMARY_URL = 'https://www.legis.iowa.gov/legislators/informationOnLegislators/allLegislators'
+  primary_url = 'https://www.legis.iowa.gov/legislators/informationOnLegislators/allLegislators'
 
-  sh = state_helper(PRIMARY_URL)
+  sh = state_helper(primary_url)
   sh_addrs = sh.get_mailto_addresses()
   for addr in sh_addrs:
     print(addr)

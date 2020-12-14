@@ -49,13 +49,18 @@ from state_scripts import west_virginia
 from state_scripts import wisconsin
 from state_scripts import wyoming
 
+from util.email_list_sanitizer import email_list_sanitizer
+
 import sys
 import os
 
 OUTPUT_DIRECTORY = '../output/'
 
-def get_state_email_addresses(state_name):
+def get_state_email_addresses(state_name, should_sanitize=False):
   ans = eval(f'{state_name}.run()')
+  if should_sanitize:
+    els = email_list_sanitizer.new(ans)
+    ans = els.sanitize()
   return ans
 
 def save_addresses_to_file(state_name, addresses):

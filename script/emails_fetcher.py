@@ -50,21 +50,32 @@ from state_scripts import wisconsin
 from state_scripts import wyoming
 
 from util.email_list_sanitizer import email_list_sanitizer
+from util.states_list import fifty_states_list
 
 import sys
 import os
 
 OUTPUT_DIRECTORY = '../output/'
+SANITIZED_OUTPUT_DIRECTORY = '../sanitized_output/'
 
 def get_state_email_addresses(state_name, should_sanitize=False):
   ans = eval(f'{state_name}.run()')
   if should_sanitize:
-    els = email_list_sanitizer.new(ans)
+    els = email_list_sanitizer(ans)
     ans = els.sanitize()
   return ans
 
-def save_addresses_to_file(state_name, addresses):
-  filepath = f'{OUTPUT_DIRECTORY}{state_name}.txt'
+def get_all_state_email_addresses(should_sanitize=False):
+  ret_hash = {}
+  for state in fifty_states_list():
+    ret_hash[state] = get_state_email_addresses(state, should_sanitize)
+  return ret_hash
+
+def save_addresses_to_file(state_name, addresses, should_sanitize=False):
+  if should_sanitize:
+    filepath = f'{SANITIZED_OUTPUT_DIRECTORY}{state_name}.txt'
+  else:
+    filepath = f'{OUTPUT_DIRECTORY}{state_name}.txt'
   try:
     os.remove(filepath)
   except OSError:
@@ -75,75 +86,25 @@ def save_addresses_to_file(state_name, addresses):
     else:
       f.write('\n'.join(addresses))
 
-def get_all_state_email_addresses():
-  ret_hash = {}
-  for state in FIFTY_STATES:
-    ret_hash[state] = get_state_email_addresses(state) 
-  return ret_hash
-
-def save_all_state_email_addresses():
-  state_email_hash = get_all_state_email_addresses()
+def save_all_state_email_addresses(should_sanitize=False):
+  state_email_hash = get_all_state_email_addresses(should_sanitize)
   for key in state_email_hash:
-    save_addresses_to_file(key, state_email_hash[key])
-
-FIFTY_STATES = ['alabama',
-                'alaska',
-                'arizona',
-                'arkansas',
-                'california',
-                'colorado',
-                'connecticut',
-                'delaware',
-                'florida',
-                'georgia',
-                'hawaii',
-                'idaho',
-                'illinois',
-                'indiana',
-                'iowa',
-                'kansas',
-                'kentucky',
-                'louisiana',
-                'maine',
-                'maryland',
-                'massachusetts',
-                'michigan',
-                'minnesota',
-                'mississippi',
-                'missouri',
-                'montana',
-                'nebraska',
-                'nevada',
-                'new_hampshire',
-                'new_jersey',
-                'new_mexico',
-                'new_york',
-                'north_carolina',
-                'north_dakota',
-                'ohio',
-                'oklahoma',
-                'oregon',
-                'pennsylvania',
-                'rhode_island',
-                'south_carolina',
-                'south_dakota',
-                'tennessee',
-                'texas',
-                'utah',
-                'vermont',
-                'virginia',
-                'washington',
-                'west_virginia',
-                'wisconsin',
-                'wyoming']
+    save_addresses_to_file(key, state_email_hash[key], should_sanitize)
 
 if __name__ == "__main__":
   arg = sys.argv[1]
+  arg2 = False
+  if len(sys.argv) > 2:
+    arg2 = sys.argv[2]
+
+  # supported arguments:
+  # all - get all state email addresses
+  # save - save 
   if arg == 'all':
-    get_all_state_email_addresses()
+    get_all_state_email_addresses(arg2)
   elif arg == 'save':
-    save_all_state_email_addresses() 
-  elif arg in FIFTY_STATES:
-    get_state_email_addresses(arg)
+    save_all_state_email_addresses(arg2) 
+  elif arg in fifty_states_list():
+    get_state_email_addresses(arg, arg2)
   else:
     print("Invalid value supplied.  supply a downcased state name, or 'all'")

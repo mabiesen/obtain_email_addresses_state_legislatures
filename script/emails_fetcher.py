@@ -26,5 +26,74 @@ from state_scripts import missouri
 from state_scripts import montana
 from state_scripts import nebraska
 
+import sys
 
-alaska.run()
+def get_state_email_addresses(state_name):
+  ans = eval(f'{state_name}.run()')
+  return ans
+
+def get_all_state_email_addresses():
+  ret_hash = {}
+  for state in FIFTY_STATES:
+    ret_hash[state] = get_state_email_addresses(state) 
+  return ret_hash
+
+FIFTY_STATES = ['alabama',
+                'alaska',
+                'arizona',
+                'arkansas',
+                'california',
+                'colorado',
+                'connecticut',
+                'delaware',
+                'florida',
+                'georgia',
+                'hawaii',
+                'idaho',
+                'illinois',
+                'indiana',
+                'iowa',
+                'kansas',
+                'kentucky',
+                'louisiana',
+                'maine',
+                'maryland',
+                'massachusetts',
+                'michigan',
+                'minnesota',
+                'mississippi',
+                'missouri',
+                'montana',
+                'nebraska',
+                'nevada',
+                'new_hampshire',
+                'new_jersey',
+                'new_mexico',
+                'new_york',
+                'north_carolina',
+                'north_dakota',
+                'ohio',
+                'oklahoma',
+                'oregon',
+                'pennsylvania',
+                'rhode_island',
+                'south_carolina',
+                'south_dakota',
+                'tennessee',
+                'texas',
+                'utah',
+                'vermont',
+                'virginia',
+                'washington',
+                'west_virginia',
+                'wisconsin',
+                'wyoming']
+
+if __name__ == "__main__":
+  arg = sys.argv[1]
+  if arg == 'all':
+    get_all_state_email_addresses()
+  elif arg in FIFTY_STATES:
+    get_state_email_addresses(arg)
+  else:
+    print("Invalid value supplied.  supply a downcased state name, or 'all'")

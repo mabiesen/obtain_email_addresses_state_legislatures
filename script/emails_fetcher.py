@@ -50,16 +50,36 @@ from state_scripts import wisconsin
 from state_scripts import wyoming
 
 import sys
+import os
+
+OUTPUT_DIRECTORY = '../output/'
 
 def get_state_email_addresses(state_name):
   ans = eval(f'{state_name}.run()')
   return ans
+
+def save_addresses_to_file(state_name, addresses):
+  filepath = f'{OUTPUT_DIRECTORY}{state_name}.txt'
+  try:
+    os.remove(filepath)
+  except OSError:
+    pass
+  with open(filepath, 'w') as f:
+    if addresses is None:
+      f.write('None')
+    else:
+      f.write('\n'.join(addresses))
 
 def get_all_state_email_addresses():
   ret_hash = {}
   for state in FIFTY_STATES:
     ret_hash[state] = get_state_email_addresses(state) 
   return ret_hash
+
+def save_all_state_email_addresses():
+  state_email_hash = get_all_state_email_addresses()
+  for key in state_email_hash:
+    save_addresses_to_file(key, state_email_hash[key])
 
 FIFTY_STATES = ['alabama',
                 'alaska',
@@ -116,6 +136,8 @@ if __name__ == "__main__":
   arg = sys.argv[1]
   if arg == 'all':
     get_all_state_email_addresses()
+  elif arg == 'save':
+    save_all_state_email_addresses() 
   elif arg in FIFTY_STATES:
     get_state_email_addresses(arg)
   else:

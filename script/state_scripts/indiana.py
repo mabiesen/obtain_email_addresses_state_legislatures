@@ -54,5 +54,7 @@ def run():
         sr_addrs.append(addr)
         print(addr)
 
+  return (sr_addrs + hr_addrs)
+
 if __name__ == "__main__":
   run()

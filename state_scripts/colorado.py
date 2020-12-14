@@ -1,18 +1,22 @@
-import os
-import sys
-sys.path.append(os.getcwd() + '/..')
+from lib.state_helper import state_helper
 
-from state_helper import state_helper
+def run():
+  PRIMARY_URL = 'https://leg.colorado.gov/legislators'
 
-PRIMARY_URL = 'https://leg.colorado.gov/legislators'
+  # this link contains both house and senate
+  # it is in a data table
+  # to their kudos, they do have an excel output; but ideally this is csv
 
-# this link contains both house and senate
-# it is in a data table
-# to their kudos, they do have an excel output; but ideally this is csv
+  all_sh = state_helper(PRIMARY_URL)
+  all_sh.prepare_soup()
+  addresses = all_sh.bs4_helper.get_text_for_tds()
+  addrs = []
+  for address in addresses:
+    if  '@' in address:
+      addr = address.strip()
+      addrs.append(addr)
+      print(addr)
+  return addrs
 
-all_sh = state_helper(PRIMARY_URL)
-all_sh.prepare_soup()
-addresses = all_sh.bs4_helper.get_text_for_tds()
-for address in addresses:
-  if  '@' in address:
-    print(address.strip())
+if __name__ == "__main__":
+  run()

@@ -1,7 +1,8 @@
 from lib.state_helper import state_helper
 
-PRIMARY_REPRESENTATIVES_URL =  'https://www.ilga.gov/house/'
-PRIMARY_SENATORS_URL = 'https://www.ilga.gov/senate/'
+def run():
+  PRIMARY_REPRESENTATIVES_URL =  'https://www.ilga.gov/house/'
+  PRIMARY_SENATORS_URL = 'https://www.ilga.gov/senate/'
 
 # it seems that only house members list email addresses :(
 # need to drill into reps to see email
@@ -23,3 +24,6 @@ PRIMARY_SENATORS_URL = 'https://www.ilga.gov/senate/'
 #    for text in texts:
 #      if '@' in text and len(text) < 70:
 #        print(text)
+
+if __name__ == "__main__":
+  run()

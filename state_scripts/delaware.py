@@ -17,3 +17,6 @@ def run():
 #all_rep_links = rep_sh.html_helper.get_full_urls_from_hrefs(all_rep_links)
 #for link in all_rep_links:
 #  print(link)
+
+if __name__ == "__main__":
+  run()

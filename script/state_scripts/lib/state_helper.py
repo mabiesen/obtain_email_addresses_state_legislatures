@@ -5,15 +5,19 @@ import tempfile
 import csv
 
 class state_helper(object):
-  def __init__(self, url):
+  def __init__(self, url, has_javascript=False):
     self.url = url
     self.html_helper =  html_helper(self.url)
+    self.has_javascript = has_javascript
 
   def prepare_soup(self):
     try:
       self.bs4_helper
     except:
-      self.bs4_helper = bs4_helper(self.html_helper.get_html())
+      if self.has_javascript:
+        self.bs4_helper = bs4_helper(self.html_helper.get_html_with_javascript())
+      else:
+        self.bs4_helper = bs4_helper(self.html_helper.get_html())
 
   def get_mailto_addresses(self):
     self.prepare_soup()

@@ -6,8 +6,8 @@ def run():
 
   # unfortunately these sites seem to use javascript, will have to wait
 
-  sen_sh = state_helper(senators_url)
-  rep_sh = state_helper(representatives_url)
+  sen_sh = state_helper(senators_url, True)
+  rep_sh = state_helper(representatives_url, True)
 
   rep_addrs = rep_sh.get_mailto_addresses()
   for addr in rep_addrs:

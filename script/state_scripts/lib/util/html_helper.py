@@ -1,6 +1,7 @@
 from urllib.parse import urlparse
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
+from selenium import webdriver
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -19,6 +20,11 @@ class html_helper(object):
     result = requests.get(self.url, verify = False)
     result.raise_for_status()
     return result.text #we dont need the result status detail, just html
+
+  def get_html_with_javascript(self):
+    driver = webdriver.PhantomJS()
+    driver.get(self.url)
+    return driver.page_source
 
   def get_file_contents(self):
     result = requests.get(self.url, verify=False, allow_redirects=True) 

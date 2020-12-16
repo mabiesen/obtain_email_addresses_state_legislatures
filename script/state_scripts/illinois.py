@@ -4,14 +4,11 @@ def run():
   representatives_url =  'https://www.ilga.gov/house/'
   senators_url = 'https://www.ilga.gov/senate/'
 
-# it seems that only house members list email addresses :(
-# need to drill into reps to see email
-#... but it seems they are nesting tds, i cant get to the nested td...
-#..... and it seems likely that house email detail are created via javascript
-# can possibly work around the issue using regex.
+  #senators_url defunct
 
   rep_sh = state_helper(representatives_url)
   rep_sh.prepare_soup()
+
 
   links = rep_sh.bs4_helper.get_hrefs_for_a_tag()
   links = rep_sh.html_helper.get_full_urls_from_hrefs(links)
@@ -27,6 +24,7 @@ def run():
           text = text.split()[-1]
           rep_addrs.append(text)
           print(text)
+
   return rep_addrs
 
 if __name__ == "__main__":

@@ -17,13 +17,13 @@ def run():
 
   sen_sh = state_helper(senators_url)
   sen_sh.prepare_soup()
-  sen_links = rsen_sh.bs4_helper.get_hrefs_for_a_tag()
+  sen_links = sen_sh.bs4_helper.get_hrefs_for_a_tag()
   sen_addrs = []
   for link in sen_links:
     if 'Legislator?' in link:
       temp_sh = state_helper('https://www.nmlegis.gov/Members/' + link)
-      sem_addrs = temp_sh.get_mailto_addresses()
-      for sen_addr in  rep_addrs:
+      sen_addrs = temp_sh.get_mailto_addresses()
+      for sen_addr in  sen_addrs:
         print(sen_addr)
 
 if __name__ == "__main__":

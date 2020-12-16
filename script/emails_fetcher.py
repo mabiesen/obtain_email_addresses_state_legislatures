@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from state_scripts import alabama
 from state_scripts import alaska
 from state_scripts import arizona

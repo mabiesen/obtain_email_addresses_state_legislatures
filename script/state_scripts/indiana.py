@@ -13,8 +13,8 @@ def run():
   #hd_sh.prepare_soup()
   hr_sh = state_helper(house_republicans_url)
   hr_sh.prepare_soup()
-  #sd_sh = state_helper(senate_democrats_url)
-  #sd_sh.prepare_soup()
+  sd_sh = state_helper(senate_democrats_url, True)
+  sd_sh.prepare_soup()
   sr_sh = state_helper(senate_republicans_url)
   sr_sh.prepare_soup()
 
@@ -32,15 +32,17 @@ def run():
         hr_addrs.append(addr)
         print(addr)
 
-  #sd_links = sd_sh.bs4_helper.get_hrefs_for_class('eg-senators-grid-element-24')
-  #for link in sd_links:
-  #  temp_sh = state_helper(link)
-  #  temp_sh.prepare_soup()
-  #  links = temp_sh.bs4_helper.get_hrefs_for_a_tag()
-  #  for s_link in links:
-  #    print(s_link)
-  #    if 'mailto:' in s_link:
-  #      print(s_link.replace('mailto:',''))
+  sd_links = sd_sh.bs4_helper.get_hrefs_for_class('eg-senators-grid-element-24')
+  sd_addrs = []
+  for link in sd_links:
+    temp_sh = state_helper(link, True)
+    temp_sh.prepare_soup()
+    links = temp_sh.bs4_helper.get_hrefs_for_a_tag()
+    for s_link in links:
+      if 'mailto:' in s_link:
+        addr = s_link.replace('mailto:','')
+        sd_addrs.append(addr)
+        print(addr)
 
   sr_links = sr_sh.bs4_helper.get_hrefs_for_a_tags_in_div_by_class('senator-item')
   sr_addrs = []
@@ -54,7 +56,7 @@ def run():
         sr_addrs.append(addr)
         print(addr)
 
-  return (sr_addrs + hr_addrs)
+  return (sr_addrs + sd_addrs + hr_addrs)
 
 if __name__ == "__main__":
   run()

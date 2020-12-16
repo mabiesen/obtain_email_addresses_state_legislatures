@@ -4,8 +4,6 @@ def run():
   senators_url = 'https://www.leg.state.nv.us/App/Legislator/A/Senate/'
   representatives_url = 'https://www.leg.state.nv.us/App/Legislator/A/Assembly/'
 
-  # unfortunately these sites seem to use javascript, will have to wait
-
   sen_sh = state_helper(senators_url, True)
   rep_sh = state_helper(representatives_url, True)
 

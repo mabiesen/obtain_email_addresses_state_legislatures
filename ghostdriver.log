@@ -1,5 +1,34 @@
-[INFO  - 2020-12-16T04:24:55.591Z] GhostDriver - Main - running on port 60246
-[INFO  - 2020-12-16T04:24:55.869Z] Session [a688e9a0-3f56-11eb-a816-89550e5b160f] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2020-12-16T04:24:55.869Z] Session [a688e9a0-3f56-11eb-a816-89550e5b160f] - page.customHeaders:  - {}
-[INFO  - 2020-12-16T04:24:55.869Z] Session [a688e9a0-3f56-11eb-a816-89550e5b160f] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2020-12-16T04:24:55.869Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: a688e9a0-3f56-11eb-a816-89550e5b160f
+[INFO  - 2020-12-16T04:46:01.342Z] GhostDriver - Main - running on port 49535
+[INFO  - 2020-12-16T04:46:01.636Z] Session [98fd7a00-3f59-11eb-ac1b-6d4c4d6174ff] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2020-12-16T04:46:01.636Z] Session [98fd7a00-3f59-11eb-ac1b-6d4c4d6174ff] - page.customHeaders:  - {}
+[INFO  - 2020-12-16T04:46:01.636Z] Session [98fd7a00-3f59-11eb-ac1b-6d4c4d6174ff] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2020-12-16T04:46:01.636Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 98fd7a00-3f59-11eb-ac1b-6d4c4d6174ff
+[ERROR - 2020-12-16T04:46:06.237Z] Session [98fd7a00-3f59-11eb-ac1b-6d4c4d6174ff] - page.onError - msg: Error: iframe sandboxes not supported
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-12-16T04:46:06.238Z] Session [98fd7a00-3f59-11eb-ac1b-6d4c4d6174ff] - page.onError - stack:
+  Mr (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:307)
+  Lr (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:305)
+  send (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:308)
+  gd (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:422)
+  (anonymous function) (:0)
+  (anonymous function) (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:300)
+  pr (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:301)
+  (anonymous function) (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:300)
+  (anonymous function) (:0)
+  (anonymous function) (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:315)
+  (anonymous function) (:0)
+  ds (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:318)
+  start (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:317)
+  Og (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:315)
+  (anonymous function) (:0)
+  (anonymous function) (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:301)
+  (anonymous function) (:0)
+  dv (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:469)
+  wv (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:484)
+  googleTranslateElementInit (http://gencourt.state.nh.us/Senate/members/senate_roster.aspx:725)
+  e (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:486)
+  (anonymous function) (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:486)
+  (anonymous function) (https://translate.googleapis.com/element/TE_20201130_00/e/js/element/element_main.js:486)
+
+  phantomjs://platform/console++.js:263 in error

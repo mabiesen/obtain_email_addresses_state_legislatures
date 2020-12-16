@@ -36,11 +36,11 @@ class state_helper(object):
       ret_array = self.xlsx_helper.get_data_from_column_by_index(page_index, column_index, pop_rows)
     return ret_array
       
-  def parse_csv_column_by_index(self, column_index):
+  def parse_csv_column_by_index(self, column_index, delim=','):
     ret_array = []
     unparsed_rows = self.html_helper.get_html().split("\n")
     for row in unparsed_rows:
-      parts = row.split(",")
+      parts = row.split(delim)
       if (len(parts) - 1) >= column_index:
         ret_array.append(parts[column_index])
     return ret_array

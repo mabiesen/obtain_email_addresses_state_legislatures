@@ -26,5 +26,7 @@ def run():
       for sen_addr in  sen_addrs:
         print(sen_addr)
 
+  return (rep_addrs + sen_addrs)
+
 if __name__ == "__main__":
   run()

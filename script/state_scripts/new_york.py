@@ -19,7 +19,7 @@ def run():
   for addr in rep_addrs:
     print(addr)
 
-  return (sen_addrs)
+  return (rep_addrs + sen_addrs)
 
 
 # Im not finding anything for state representatives!!!

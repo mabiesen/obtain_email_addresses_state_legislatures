@@ -24,8 +24,8 @@ class state_helper(object):
     hrefs = self.bs4_helper.get_hrefs_for_a_tag()
     ret_array = []
     for href in hrefs:
-      if 'mailto:' in href:
-        ret_array.append(href.replace('mailto:',''))
+      if 'mailto:' in href.lower():
+        ret_array.append(href.replace('mailto:','').replace('MAILTO:',''))
     return ret_array
 
   def parse_xlsx_file_column_by_index(self, page_index, column_index, pop_rows=False):

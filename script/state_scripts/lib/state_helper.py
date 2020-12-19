@@ -1,6 +1,7 @@
 from state_scripts.lib.util.html_helper import  html_helper
 from state_scripts.lib.util.bs4_helper import bs4_helper
 from state_scripts.lib.util.xlsx_helper import xlsx_helper
+from state_scripts.lib.util.xls_helper import xls_helper
 import tempfile
 import csv
 
@@ -34,6 +35,14 @@ class state_helper(object):
       fp.write(self.html_helper.get_file_contents()) 
       self.xlsx_helper = xlsx_helper(fp.name)
       ret_array = self.xlsx_helper.get_data_from_column_by_index(page_index, column_index, pop_rows)
+    return ret_array
+
+  def parse_xls_file_column_by_index(self, page_index, column_index, pop_rows=False):
+    ret_array = []
+    with tempfile.NamedTemporaryFile(suffix='.xls') as fp:
+      fp.write(self.html_helper.get_file_contents())
+      self.xls_helper = xls_helper(fp.name)
+      ret_array = self.xls_helper.get_data_from_column_by_index(page_index, column_index, pop_rows)
     return ret_array
       
   def parse_csv_column_by_index(self, column_index, delim=','):

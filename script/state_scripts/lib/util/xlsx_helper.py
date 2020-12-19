@@ -6,7 +6,7 @@ class xlsx_helper(object):
 
   def get_data_from_column_by_index(self, page_index, column_letter, pop_rows):
     if isinstance(column_letter, int):
-      column_letter = chr(ord('@')+number)
+      column_letter = chr(ord('@') + column_letter)
     wb = openpyxl.load_workbook(self.workbook_path)
     sheet = wb.worksheets[page_index]
     column = sheet[column_letter]
